@@ -1,9 +1,2 @@
-const menuBtn=document.querySelector('.menu-btn');
-const navLinks=document.querySelector('.nav-links');
-menuBtn?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open)});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.getElementById('year').textContent=new Date().getFullYear();
-const glow=document.querySelector('.cursor-glow');
-window.addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+const menu=document.querySelector('.menu'),links=document.querySelector('.nav-links');menu?.addEventListener('click',()=>links.classList.toggle('open'));document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const els=document.querySelectorAll('.feature,.grid article,.exp,.two-exp>div,.skills>div,.about-grid>div,.cta-inner,.contact-inner');const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}}),{threshold:.08});els.forEach(e=>{e.classList.add('reveal');obs.observe(e)});
